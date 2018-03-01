@@ -1,0 +1,54 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4"> </div>
+    <div class="col-md-4" >
+        <img id="bur_img" src='/assets/img/burger_img.png' alt="burger"> 
+        <h1 id="title_head"> Eat-Da-Burger </h1> 
+    </div>
+    <div class="col-md-4"> </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4"> 
+      <div class="not_devored">
+        <ul class="list-group" id="not_devored_burger_list">
+            {{#each burgers}}
+              {{#unless devoured}}
+                <li class="list-group-item list-group-item-warning list_options">{{id}}. {{burger_name}}
+                  <button type="button" class="btn btn-primary devour" data-id="{{id}}" data-devoured="{{devoured}}">Devour</button>
+                </li>
+              {{/unless}}
+            {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4" id="burger_form">
+      <form class="burger_form">
+        <div class="form-group"> 
+            <div id="alert"> You cannot submit an empty field </div>
+            <textarea class="form-control" id="burger_textarea" rows="3"></textarea>
+            <p id="instructions">Enter a burger you want to eat. Click the "Submit" button. </p>
+            <button class="btn btn-info" id="submit_burger" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4"> 
+      <div class="devoured">
+        {{#each burgers}}
+              {{#if devoured}}
+                <li class="list-group-item list-group-item-warning list_options"> {{id}}. {{burger_name}}
+                </li>
+              {{/if}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
