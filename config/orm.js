@@ -1,24 +1,26 @@
 const connection = require("../config/connection.js");
 
 const orm = {
-    selectAll: (callback) => {
-        connection.query("SELECT * FROM burgers", (err, data) => {
+    selectAll: (tableName, callback) => {
+        var query = "SELECT * FROM " + tableName
+        connection.query(query, (err, data) => {
             if (err) throw err;
             callback(data)
         })
     },
 
-    insertOne: (newBurger, callback) => {
-        connection.query("INSERT INTO burgers SET ?", newBurger, (err, data) => {
+    insertOne: (tableName, newBurger, callback) => {
+        var query = "INSERT INTO " + tableName + " SET ?"
+        connection.query(query, newBurger, (err, data) => {
             if (err) throw err;
 
             callback(data)
         })
     },
 
-    updateOne: (udateBurger, callback) => {
-        
-        connection.query("UPDATE burgers SET ? WHERE ?", [
+    updateOne: (tableName, udateBurger, callback) => {
+        var query = "UPDATE " + tableName + " SET ? WHERE ?"
+        connection.query(query, [
             {
                 devoured: true
             },

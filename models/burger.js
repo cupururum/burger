@@ -2,19 +2,19 @@ const orm = require("../config/orm.js")
 
 var burger = {
     all: (callback) => {
-        orm.selectAll((response) => {
+        orm.selectAll("burgers",(response) => {
                callback(response)
         })  
     },
 
     create: (burgerName, callback) => {
-        orm.insertOne(burgerName, (response) => {
+        orm.insertOne("burgers", burgerName, (response) => {
             callback(response)
         })
     },
 
     update: (burgerId, callback) => {
-        orm.updateOne(burgerId, (response) => {
+        orm.updateOne("burgers", burgerId, (response) => {
             callback(response)
         })
     }
