@@ -9,25 +9,18 @@ const orm = {
         })
     },
 
-    insertOne: (tableName, newBurger, callback) => {
+    insertOne: (tableName, newItem, callback) => {
         var query = "INSERT INTO " + tableName + " SET ?"
-        connection.query(query, newBurger, (err, data) => {
+        connection.query(query, newItem, (err, data) => {
             if (err) throw err;
 
             callback(data)
         })
     },
 
-    updateOne: (tableName, udateBurger, callback) => {
+    updateOne: (tableName, updateItem, callback) => {
         var query = "UPDATE " + tableName + " SET ? WHERE ?"
-        connection.query(query, [
-            {
-                devoured: true
-            },
-            {
-                id: udateBurger
-            }
-        ], (err, data) => {
+        connection.query(query, updateItem, (err, data) => {
             if (err) throw err;
 
             callback(data)

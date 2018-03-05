@@ -14,7 +14,15 @@ var burger = {
     },
 
     update: (burgerId, callback) => {
-        orm.updateOne("burgers", burgerId, (response) => {
+        var updateBurger = [
+            {
+                devoured: true
+            },
+            {
+                id: burgerId
+            }
+        ]
+        orm.updateOne("burgers", updateBurger, (response) => {
             callback(response)
         })
     }
